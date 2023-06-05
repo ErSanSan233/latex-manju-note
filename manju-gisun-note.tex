@@ -11,6 +11,10 @@
 \usepackage[normalem]{ulem}  % Provides underline and strikeout commands
 \usepackage{tikz}            % Required for drawing the arrow
 
+%#region 竖排支持
+
+\XeTeXupwardsmode1
+
 %输出内容旋转90度
 \AtBeginShipout{%
     \global\setbox\AtBeginShipoutBox\vbox{%
@@ -18,19 +22,32 @@
         \box\AtBeginShipoutBox
     }%
 }%
+%#endregion
 
+%#region 汉满混排字体
 \setCJKmainfont[
     RawFeature={vertical:+vert}, 
     Scale=0.6]
     {NotoSerifCJKtc-Regular}
 
-\setfontfamily\manju[
+% \setfontfamily\manju[
+%     Mapping = abkai-to-manju,
+%     Scale = 1.3]
+%     {AbkaiXanyan}
+
+\setmainfont[
     Mapping = abkai-to-manju,
     Scale = 1.3]
     {AbkaiXanyan}
 
-\setlength{\parskip}{0.5cm}
+\setfontfamily\latin[
+    Scale = 1]
+    {NotoSerifCJKtc-Regular}
 
+\setlength{\parskip}{0.5cm}
+%#endregion
+
+%#region 自定义命令
 %箭头绘制
 \newcommand{\arrowuline}[1]{%
   \tikz[baseline=(char.base)]{
@@ -52,11 +69,13 @@
 \newcommand{\V}{%
   \textcircled{\footnotesize V}\!%
 }
+%#endregion
 
 \begin{document}
-\manju \large 
+% \manju 
+\large 
 
-阅读方向：从右向左（暂时不知道咋设置成从左向右）。
+{\latin bithe}
 
 \input{note/manju-note-letter.tex}
 \input{note/manju-note-declension.tex}
