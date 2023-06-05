@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{amssymb}
+
+\usepackage{indentfirst}
+\usepackage{atbegshi}
+\usepackage{parskip}
+
+\usepackage[normalem]{ulem}  % Provides underline and strikeout commands
+\usepackage{tikz}            % Required for drawing the arrow
+
+%输出内容旋转90度
+\AtBeginShipout{%
+    \global\setbox\AtBeginShipoutBox\vbox{%
+        \special{pdf: put @thispage <</Rotate 90>>}%
+        \box\AtBeginShipoutBox
+    }%
+}%
+
+\setCJKmainfont[
+    RawFeature={vertical:+vert}, 
+    Scale=0.6]
+    {NotoSerifCJKtc-Regular}
+
+\setfontfamily\manju[
+    Mapping = abkai-to-manju,
+    Scale = 1.3]
+    {AbkaiXanyan}
+
+\setlength{\parskip}{0.5cm}
+
+%箭头绘制
+\newcommand{\arrowuline}[1]{%
+  \tikz[baseline=(char.base)]{
+    \node[inner sep=0pt,outer sep=0pt] (char) {#1};
+    \draw[blue,latex-] ([yshift=0.5ex]char.north west) -- ([yshift=0.5ex]char.north east) |- (char.south east);
+  }%
+}
+
+\newcommand{\aux}[1]{%
+  \!\arrowuline{#1}\!%
+}
+
+%双语展示
+\newcommand{\bil}[2]{%
+  \raisebox{1em}[0pt][0pt]{\makebox[0cm][l]{\footnotesize #2}}\mbox{#1}%
+}
+
+%语法成分
+\newcommand{\V}{%
+  \textcircled{\footnotesize V}\!%
+}
+
+\begin{document}
+\manju \large 
+
+阅读方向：从右向左（暂时不知道咋设置成从左向右）。
+
+\input{note/manju-note-letter.tex}
+\input{note/manju-note-declension.tex}
+\input{note/manju-note-sentence.tex}
+\end{document}

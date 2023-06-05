@@ -1,0 +1,13 @@
+*.exa
+*.aux
+*.log
+*.gz
+*.toc
+*.code-workspace
+*.out
+
+.vscode/*
+
+.DS_Store
+*.mtc*
+*.maf
