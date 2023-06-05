@@ -1,4 +1,5 @@
 \documentclass{article}
+% \documentclass{scrartcl}
 \usepackage{xeCJK}
 \usepackage{fontspec}
 \usepackage{graphicx}
@@ -12,7 +13,7 @@
 \usepackage{tikz}            % Required for drawing the arrow
 
 %#region 竖排支持
-
+%堆叠行，实现从下向上折行
 \XeTeXupwardsmode1
 
 %输出内容旋转90度
@@ -22,62 +23,71 @@
         \box\AtBeginShipoutBox
     }%
 }%
+
+%纠正汉字偏移
+%作者：Nyoeghau
+%链接：https://www.zhihu.com/question/20544732/answer/581301432
+\newcommand*\CJKmovesymbol[1]{\raise.45em\hbox{#1}}
+\newcommand*\CJKmove{\punctstyle{plain}
+    \let\CJKsymbol\CJKmovesymbol
+    \let\CJKpunctsymbol\CJKsymbol} %修正baseline
+    % \AtBeginDocument{\CJKmove \sloppy}
+    \AtBeginDocument{\CJKmove}
+
 %#endregion
 
 %#region 汉满混排字体
 \setCJKmainfont[
     RawFeature={vertical:+vert}, 
-    Scale=0.6]
+    Scale=0.7]
     {NotoSerifCJKtc-Regular}
-
-% \setfontfamily\manju[
-%     Mapping = abkai-to-manju,
-%     Scale = 1.3]
-%     {AbkaiXanyan}
 
 \setmainfont[
     Mapping = abkai-to-manju,
-    Scale = 1.3]
+    Scale = 1]
     {AbkaiXanyan}
 
+%照抄西文
 \setfontfamily\latin[
-    Scale = 1]
+    Scale = 0.7]
     {NotoSerifCJKtc-Regular}
 
-\setlength{\parskip}{0.5cm}
+% \setlength{\parskip}{0.5cm}
 %#endregion
 
 %#region 自定义命令
+%特殊字符的落到CJK字体中
+\xeCJKsetcharclass{"24B6}{"24F9}{1}%Ⓐ~ⓩ
+% \xeCJKsetcharclass{"002F}{"002F}{1}%/
+
 %箭头绘制
 \newcommand{\arrowuline}[1]{%
-  \tikz[baseline=(char.base)]{
-    \node[inner sep=0pt,outer sep=0pt] (char) {#1};
-    \draw[blue,latex-] ([yshift=0.5ex]char.north west) -- ([yshift=0.5ex]char.north east) |- (char.south east);
-  }%
+    \tikz[baseline=(char.base)]{
+        \node[inner sep=0pt,outer sep=0pt] (char) {#1};
+        \draw[blue,latex-] ([yshift=0.5ex]char.north west) -- ([yshift=0.5ex]char.north east) |- (char.south east);
+    }%
 }
 
 \newcommand{\aux}[1]{%
-  \!\arrowuline{#1}\!%
+    \!\arrowuline{#1}\!%
 }
 
 %双语展示
-\newcommand{\bil}[2]{%
-  \raisebox{1em}[0pt][0pt]{\makebox[0cm][l]{\footnotesize #2}}\mbox{#1}%
+\newcommand{\bil}[2]{
+    \raisebox{0.8em}[0pt][0pt]{\makebox[0cm][l]{\tiny #2}}\mbox{#1}
 }
 
 %语法成分
-\newcommand{\V}{%
-  \textcircled{\footnotesize V}\!%
-}
+\newcommand{\A}{Ⓐ}
+\newcommand{\B}{Ⓑ}
+\newcommand{\C}{Ⓒ}
+\newcommand{\V}{Ⓥ\hspace{-0.5pt}\ignorespaces}
 %#endregion
 
 \begin{document}
-% \manju 
-\large 
-
-{\latin bithe}
 
 \input{note/manju-note-letter.tex}
+\input{note/manju-note-word.tex}
 \input{note/manju-note-declension.tex}
 \input{note/manju-note-sentence.tex}
 \end{document}
