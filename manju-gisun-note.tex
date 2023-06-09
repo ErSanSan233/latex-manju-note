@@ -12,6 +12,12 @@
 \usepackage[normalem]{ulem}  % Provides underline and strikeout commands
 \usepackage{tikz}            % Required for drawing the arrow
 
+\usepackage{multirow}
+\usepackage{booktabs}
+
+\usepackage{footnote}
+\usepackage{makecell} %表格内换行
+
 %#region 竖排支持
 %堆叠行，实现从下向上折行
 \XeTeXupwardsmode1
@@ -39,12 +45,14 @@
 %#region 汉满混排字体
 \setCJKmainfont[
     RawFeature={vertical:+vert}, 
-    Scale=0.7]
-    {NotoSerifCJKtc-Regular}
+    Scale=0.7,
+    FakeStretch=0.95]
+    {NotoSerifCJKsc-Regular}
 
 \setmainfont[
     Mapping = abkai-to-manju,
-    Scale = 1]
+    Scale=1,
+    FakeStretch=1.1]
     {AbkaiXanyan}
 
 %照抄西文
@@ -77,11 +85,21 @@
     \raisebox{0.8em}[0pt][0pt]{\makebox[0cm][l]{\tiny #2}}\mbox{#1}
 }
 
+%照抄西文
+\newcommand{\lat}[1]{
+    {\latin #1}
+}
+
+%表格合并列
+% \newcommand*{\mrow}[2]{
+%     \multirow{1+#1}{*}{#2}
+% }
+
 %语法成分
-\newcommand{\A}{Ⓐ}
-\newcommand{\B}{Ⓑ}
-\newcommand{\C}{Ⓒ}
-\newcommand{\V}{Ⓥ\hspace{-0.5pt}\ignorespaces}
+\newcommand{\A}{ Ⓐ }
+\newcommand{\B}{ Ⓑ }
+\newcommand{\C}{ Ⓒ }
+\newcommand{\V}{ Ⓥ\hspace{-0.5pt}\ignorespaces}
 %#endregion
 
 \begin{document}
