@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\usepackage{atbegshi}
+\usepackage{gezhu}
+\usepackage{makecell}
+\usepackage{geometry}
+
+\XeTeXupwardsmode1
+
+\setCJKmainfont[
+    RawFeature={vertical:+vert}, 
+    Scale=0.7,
+    FakeStretch=0.95]
+    {NotoSerifCJKsc-Regular}
+
+\setmainfont[
+    Mapping = ../abkai-to-manju,
+    Scale = 1]
+    {AbkaiXanyan}
+
+\setgezhulines{2} 
+
+% \setgezhuraise{-2pt}
+
+
+
+%输出内容旋转90度
+\AtBeginShipout{%
+    \global\setbox\AtBeginShipoutBox\vbox{%
+        \special{pdf: put @thispage <</Rotate 90>>}%
+        \box\AtBeginShipoutBox
+    }%
+}%
+
+\geometry{
+    paperheight = 12.25cm,
+    paperwidth = 16cm,
+    % inner = 2cm,
+    % outer = 2cm,
+    left = 3cm,
+    right = 2cm,
+    top = 2cm,
+    bottom = 2cm
+}
+
+%双语展示
+\newcommand{\bilr}[2]{
+    \raisebox{0.5em}{\makebox[0cm][l]{\small #2}}\mbox{#1}
+}
+
+\newcommand{\bill}[2]{
+    \raisebox{-0.4em}{\makebox[0cm][l]{\tiny #2}}\mbox{#1}
+}
+
+\newcommand{\slb}[2]{
+    \makebox[0cm][l]{\raisebox{0.3em}{#1}}\raisebox{-0.3em}{#2}
+}
+
+\newcommand{\ct}[4]{%词头
+    \everygezhu{\fontsize{18}{4.8}\selectfont}
+    \gezhu{\bill{#3}{#4} \linebreak[4] \bilr{#1}{#2}}
+}
+
+\newcommand{\sy}[1]{%释义
+    \everygezhu{\fontsize{15}{6.5}\selectfont}
+    \gezhu{#1}
+}
+
+% \linespread{3}
+\renewcommand{\baselinestretch}{6}
+
+\begin{document}
+\begin{withgezhu}
+    \hspace{-1.5cm}
+    \ct{天}{tyan}{abka}{阿補\slb 喀阿} 
+    \sy{umesi den tumen jaka be elbehengge be, abka sembi.}
+    \ct{上天}{xang tian}{dergi abka}{\slb 德额哷\slb 基伊 阿補\slb 喀阿}
+    \sy{tumen jaka be elbehe be jorime gisurembihede, dergi abka sembi.}
+    \ct{蒼天}{cang tian}{niuhon abka}{\slb 尼伊優\slb 和鄂安 阿補\slb 喀阿}
+    \sy{abkai boqo be jorime  gisurembihede niuhon abka sembi.}
+    \ct{清天}{qubg tiyan}{genggiyen abka}{\slb 哥額鞥\slb 基伊\slb 葉額恩 阿補\slb 喀阿}
+    \sy{tugi sukdun akv umesi bolgo getugen be, genggiyen abka sembi.}
+    \ct{天氣清肅}{tiyan qi qing su}{abka fundehun}{阿補\slb 喀阿 \slb 扶烏恩\slb 德額\slb ？烏恩}
+    \sy{boloti ome akbai boqo seksehun ojoro be, abka fundehun sembi.}
+    \ct{晨光}{qen guwang}{ulden}{烏勒\slb 德額恩}
+    \sy{alin jakarara onggolo tuqire elden be ulden sabumbi sembi.}
+    \ct{晨光現出}{qen guwang hiyan qu}{uldeke}{烏勒\slb 德額\slb 珂額}
+    \sy{ulden tuqike be uldeke sembi.}
+\end{withgezhu}
+\end{document}
+
