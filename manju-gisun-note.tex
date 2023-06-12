@@ -1,22 +1,24 @@
 \documentclass{article}
 % \documentclass{scrartcl}
 \usepackage{xeCJK}
-\usepackage{fontspec}
+% \usepackage{fontspec}
 \usepackage{graphicx}
-\usepackage{amssymb}
+% \usepackage{amssymb}
 
 \usepackage{indentfirst}
 \usepackage{atbegshi}
-\usepackage{parskip}
+% \usepackage{parskip}
 
 \usepackage[normalem]{ulem}  % Provides underline and strikeout commands
 \usepackage{tikz}            % Required for drawing the arrow
 
 \usepackage{multirow}
 \usepackage{booktabs}
-
-\usepackage{footnote}
 \usepackage{makecell} %表格内换行
+
+\usepackage{xcolor}
+\usepackage{colortbl}
+
 
 %#region 竖排支持
 %堆叠行，实现从下向上折行
@@ -62,6 +64,9 @@
 
 % \setlength{\parskip}{0.5cm}
 %#endregion
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
 
 %#region 自定义命令
 %特殊字符的落到CJK字体中
