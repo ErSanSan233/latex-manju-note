@@ -55,15 +55,18 @@
 
 \setmainfont[
     Mapping = abkai-to-manju,
-    % Scale=1,
-    FakeStretch=1.13,
-    BoldFont=AbkaiXanyan]
-    {AbkaiBuleku}
+    Scale=1,
+    FakeStretch=1.1]
+    {AbkaiXanyan}
 
 %照抄西文
 \setfontfamily\latin[
     Scale = 0.7]
     {NotoSerifCJKtc-Regular}
+
+\setfontfamily\mj[
+    Mapping = mj-to-manju]
+    {Modern-manJu}
 
 % \setlength{\parskip}{0.5cm}
 %#endregion
@@ -103,20 +106,15 @@
 \newcommand{\B}{ Ⓑ }
 \newcommand{\C}{ Ⓒ }
 \newcommand{\V}{ Ⓥ\hspace{-0.5pt}\ignorespaces}
-
-%列表成分
-\newenvironment{des}{
-    \begin{list}{}{%
-        \renewcommand{\makelabel}[1]{% 生成项目标签:
-                    【{\textbf{##1}}】}}}
-{\end{list}}
 %#endregion
 
 \begin{document}
 
-\input{note/manju-note-letter.tex}
-\input{note/manju-note-word.tex}
-\input{note/manju-note-declension.tex}
-\input{note/manju-note-sentence.tex}
+\input{note/font-test.tex}
+
+% \input{note/manju-note-letter.tex}
+% \input{note/manju-note-word.tex}
+% \input{note/manju-note-declension.tex}
+% \input{note/manju-note-sentence.tex}
 
 \end{document}
