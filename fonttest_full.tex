@@ -5,23 +5,6 @@
 \usepackage{indentfirst}
 \usepackage{atbegshi}
 
-
-\usepackage[normalem]{ulem}  % Provides underline and strikeout commands
-\usepackage{tikz}            % Required for drawing the arrow
-
-\usepackage{multirow}
-\usepackage{booktabs}
-\usepackage{makecell} %表格内换行
-
-\usepackage{xcolor}
-\usepackage{colortbl}
-
-% \usepackage{parskip}
-% \documentclass{scrartcl}
-% \usepackage{fontspec}
-% \usepackage{amssymb}
-
-
 %#region 竖排支持
 %堆叠行，实现从下向上折行
 \XeTeXupwardsmode1
@@ -33,17 +16,6 @@
         \box\AtBeginShipoutBox
     }%
 }%
-
-%纠正汉字偏移
-%作者：Nyoeghau
-%链接：https://www.zhihu.com/question/20544732/answer/581301432
-\newcommand*\CJKmovesymbol[1]{\raise.45em\hbox{#1}}
-\newcommand*\CJKmove{\punctstyle{plain}
-    \let\CJKsymbol\CJKmovesymbol
-    \let\CJKpunctsymbol\CJKsymbol} %修正baseline
-    % \AtBeginDocument{\CJKmove \sloppy}
-    \AtBeginDocument{\CJKmove}
-
 %#endregion
 
 %#region 汉满混排字体
@@ -74,47 +46,8 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.5em}
 
-%#region 自定义命令
-%特殊字符的落到CJK字体中
-\xeCJKsetcharclass{"24B6}{"24F9}{1}%Ⓐ~ⓩ
-% \xeCJKsetcharclass{"002F}{"002F}{1}%/
-
-%箭头绘制
-\newcommand{\arrowuline}[1]{%
-    \tikz[baseline=(char.base)]{
-        \node[inner sep=0pt,outer sep=0pt] (char) {#1};
-        \draw[blue,latex-] ([yshift=0.5ex]char.north west) -- ([yshift=0.5ex]char.north east) |- (char.south east);
-    }%
-}
-
-\newcommand{\aux}[1]{%
-    \!\arrowuline{#1}\!%
-}
-
-%双语展示
-\newcommand{\bil}[2]{%
-    \raisebox{0.8em}[0pt][0pt]{\makebox[0cm][l]{\tiny #2}}\mbox{#1}%
-}
-
-%照抄西文
-\newcommand{\lat}[1]{
-    {\latin #1}
-}
-
-%语法成分
-\newcommand{\A}{ Ⓐ }
-\newcommand{\B}{ Ⓑ }
-\newcommand{\C}{ Ⓒ }
-\newcommand{\V}{ Ⓥ\hspace{-0.5pt}\ignorespaces}
-%#endregion
-
 \begin{document}
 
 \input{note/font-test.tex}
-
-% \input{note/manju-note-letter.tex}
-% \input{note/manju-note-word.tex}
-% \input{note/manju-note-declension.tex}
-% \input{note/manju-note-sentence.tex}
 
 \end{document}
