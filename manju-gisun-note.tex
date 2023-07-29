@@ -16,12 +16,6 @@
 \usepackage{xcolor}
 \usepackage{colortbl}
 
-% \usepackage{parskip}
-% \documentclass{scrartcl}
-% \usepackage{fontspec}
-% \usepackage{amssymb}
-
-
 %#region 竖排支持
 %堆叠行，实现从下向上折行
 \XeTeXupwardsmode1
@@ -58,18 +52,16 @@
     % Scale=1,
     FakeStretch=1.13,
     BoldFont=AbkaiXanyan]
-    {AbkaiBuleku}
+    {AbkaiBulekuBithe}
 
 %照抄西文
 \setfontfamily\latin[
     Scale = 0.7]
     {NotoSerifCJKtc-Regular}
 
-% \setlength{\parskip}{0.5cm}
-%#endregion
-
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.5em}
+%#endregion
 
 %#region 自定义命令
 %特殊字符的落到CJK字体中
@@ -108,6 +100,62 @@
 \newcommand{\C}{ Ⓒ }
 \newcommand{\V}{ Ⓥ\hspace{-0.5pt}\ignorespaces}
 
+\newcommand{\HAfina}{%
+    =\makebox{\raisebox{1.6\baselineskip}{\makebox[0cm]{\hspace{0.8em}\tiny (\!\raisebox{0.3mm}{\lat{o}}\!)Ⅱ}}%
+    \fbox{\makebox[0.5em]{%
+    \raisebox{0.25\baselineskip}{\makebox[0cm]{=ke }}%
+    \raisebox{-0.7\baselineskip}{\makebox[0cm]{=ka }}%
+    \raisebox{0.7\baselineskip}{\makebox[0cm]{=ko }}%
+    }}}
+}
+
+\newcommand{\red}[1]{%
+    \textcolor{red}{#1}%
+}
+
+\newcommand{\HAmedi}{%
+    =\makebox{\raisebox{1.2\baselineskip}{\makebox[0cm]{\hspace{0.8em}\tiny (\!\raisebox{0.3mm}{\lat{o}}\!)Ⅱ}}%
+    \fbox{\makebox[0.2em]{%
+    \makebox[0cm]{==ke==}%
+    \raisebox{-0.5\baselineskip}{\makebox[0cm]{=ka==}}%
+    \raisebox{0.5\baselineskip}{\makebox[0cm]{=ko=}}%
+    }}
+}\!}
+
+\newcommand{\AIfina}{%
+    \raisebox{1.2\baselineskip}{\makebox[0cm]{\hspace{1mm}\tiny Ⅰ}}%
+    \fbox{\makebox[0.1em]{%
+    \makebox[0cm]{=e }%
+    \raisebox{-0.6\baselineskip}[1ex][1.5mm]{\makebox[0cm]{=a }}%
+    \raisebox{0.6\baselineskip}[3.8mm][1ex]{\makebox[0cm]{=o }}%
+    }}
+}
+
+\newcommand{\AImedi}{%
+    \raisebox{1\baselineskip}{\makebox[0cm]{\hspace{1mm}\tiny Ⅰ}}%
+    \fbox{\makebox[-0.1em]{%
+    \raisebox{-0.1\baselineskip}{\makebox[0cm]{=e==}}%
+    \raisebox{-0.6\baselineskip}[1ex][1.5mm]{\makebox[0cm]{=a==}}%
+    \raisebox{0.5\baselineskip}[3mm][1ex]{\makebox[0cm]{=o==}}%
+    }}}
+
+\newcommand{\AIIfina}{%
+    \raisebox{1.2\baselineskip}{\makebox[0cm]{\hspace{1mm}\tiny Ⅱ}}%
+    \fbox{\makebox[0.1em]{%
+    \makebox[0cm]{=e }%
+    \raisebox{-0.6\baselineskip}[1ex][1.5mm]{\makebox[0cm]{=a }}%
+    \raisebox{0.6\baselineskip}[3.8mm][1ex]{\makebox[0cm]{=o }}%
+    }}
+}
+
+\newcommand{\AIImedi}{%
+    \raisebox{1\baselineskip}{\makebox[0cm]{\hspace{1mm}\tiny Ⅱ}}%
+    \fbox{\makebox[-0.1em]{%
+    \raisebox{-0.1\baselineskip}{\makebox[0cm]{=e==}}%
+    \raisebox{-0.6\baselineskip}[1ex][1.5mm]{\makebox[0cm]{=a==}}%
+    \raisebox{0.5\baselineskip}[3mm][1ex]{\makebox[0cm]{=o==}}%
+    }}}
+
 %列表成分
 \newenvironment{des}{
     \begin{list}{}{%
@@ -117,6 +165,8 @@
 %#endregion
 
 \begin{document}
+
+\red{红色字体}表示实际拼写时需要注意特殊形式。
 
 \input{note/manju-note-letter.tex}
 \input{note/manju-note-word.tex}
