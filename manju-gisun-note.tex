@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage{xeCJK}
+\usepackage[a4paper]{geometry}
 \usepackage{graphicx}
 
 \usepackage{indentfirst}
@@ -18,6 +19,9 @@
 
 %#region 竖排支持
 %堆叠行，实现从下向上折行
+
+\geometry{left=2.5cm, right=4cm, top=2cm, bottom=3cm}
+
 \XeTeXupwardsmode1
 
 %输出内容旋转90度
@@ -64,6 +68,7 @@
 %#endregion
 
 %#region 自定义命令
+
 %特殊字符的落到CJK字体中
 \xeCJKsetcharclass{"24B6}{"24F9}{1}%Ⓐ~ⓩ
 % \xeCJKsetcharclass{"002F}{"002F}{1}%/
@@ -79,6 +84,10 @@
 \newcommand{\aux}[1]{%
     \!\arrowuline{#1}\!%
 }
+
+%特殊符号
+\newcommand{\irg}{%
+    \textcolor{red}{※}}
 
 %双语展示
 \newcommand{\bil}[2]{%
@@ -100,27 +109,44 @@
 \newcommand{\C}{ Ⓒ }
 \newcommand{\V}{ Ⓥ\hspace{-0.5pt}\ignorespaces}
 
-\newcommand{\HAfina}{%
-    =\makebox{\raisebox{1.6\baselineskip}{\makebox[0cm]{\hspace{0.8em}\tiny (\!\raisebox{0.3mm}{\lat{o}}\!)Ⅱ}}%
-    \fbox{\makebox[0.5em]{%
-    \raisebox{0.25\baselineskip}{\makebox[0cm]{=ke }}%
-    \raisebox{-0.7\baselineskip}{\makebox[0cm]{=ka }}%
-    \raisebox{0.7\baselineskip}{\makebox[0cm]{=ko }}%
-    }}}
-}
-
 \newcommand{\red}[1]{%
     \textcolor{red}{#1}%
 }
 
-\newcommand{\HAmedi}{%
-    =\makebox{\raisebox{1.2\baselineskip}{\makebox[0cm]{\hspace{0.8em}\tiny (\!\raisebox{0.3mm}{\lat{o}}\!)Ⅱ}}%
-    \fbox{\makebox[0.2em]{%
-    \makebox[0cm]{==ke==}%
-    \raisebox{-0.5\baselineskip}{\makebox[0cm]{=ka==}}%
-    \raisebox{0.5\baselineskip}{\makebox[0cm]{=ko=}}%
-    }}
-}\!}
+\newcommand{\blue}[1]{%
+    \textcolor{blue}{#1}%
+}
+
+\newcommand{\ii}[3]{%
+    \raisebox{1.6\baselineskip}{\makebox[0cm]{\hspace{1mm}\tiny Ⅱ}}%
+    \fbox{\hspace{-0.35em}%
+    \raisebox{-0.7\baselineskip}{\makebox[0cm][l]{#1}}%
+    \raisebox{0.7\baselineskip}{\makebox[0cm][l]{#3}}%
+    #2%
+}}
+
+\newcommand{\HA}{%
+    \fbox{HA}%
+}
+
+% \newcommand{\HAfina}{%
+%     \fbox{HA}
+%     % =\makebox{\raisebox{1.6\baselineskip}{\makebox[0cm]{\hspace{0.8em}\tiny Ⅱ}}%
+%     % \fbox{\makebox[2.2em]{%
+%     % \raisebox{-0.7\baselineskip}{\makebox[0cm][l]{=ha / =ka}}%
+%     % \raisebox{0.7\baselineskip}{\makebox[0cm][l]{=ho / =ko}}%
+%     % \raisebox{0.25\baselineskip}{{=he / =ke}}%
+%     % }}}
+% }
+
+% \newcommand{\HAmedi}{%
+%     =\makebox{\raisebox{1.2\baselineskip}{\makebox[0cm]{\hspace{0.8em}\tiny (\!\raisebox{0.3mm}{\lat{o}}\!)Ⅱ}}%
+%     \fbox{\makebox[0.2em]{%
+%     \makebox[0cm]{==he==}%
+%     \raisebox{-0.5\baselineskip}{\makebox[0cm]{=ha==}}%
+%     \raisebox{0.5\baselineskip}{\makebox[0cm]{=ho=}}%
+%     }}
+% }\!}
 
 \newcommand{\AIfina}{%
     \raisebox{1.2\baselineskip}{\makebox[0cm]{\hspace{1mm}\tiny Ⅰ}}%
@@ -170,7 +196,7 @@
 
 \input{note/manju-note-letter.tex}
 \input{note/manju-note-word.tex}
-\input{note/manju-note-declension.tex}
+\input{note/manju-note-verb.tex}
 \input{note/manju-note-sentence.tex}
 
 \end{document}
