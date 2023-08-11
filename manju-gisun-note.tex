@@ -1,10 +1,12 @@
 \documentclass{article}
 \usepackage{xeCJK}
-\usepackage[a4paper]{geometry}
+\usepackage[a5paper]{geometry}
 \usepackage{graphicx}
 
 \usepackage{indentfirst}
 \usepackage{atbegshi}
+
+\usepackage{fancyhdr}
 
 
 \usepackage[normalem]{ulem}  % Provides underline and strikeout commands
@@ -57,6 +59,10 @@
     FakeStretch=1.13,
     BoldFont=AbkaiXanyan]
     {AbkaiBulekuBithe}
+
+\renewcommand{\thesection}{\textcolor{blue}{\arabic{section}}}
+\renewcommand{\thesubsection}{\textcolor{blue}{\arabic{section}-\arabic{subsection}}}
+\renewcommand{\thesubsubsection}{\textcolor{blue}{\arabic{section}-\arabic{subsection}-\arabic{subsubsection}}}
 
 %照抄西文
 \setfontfamily\latin[
@@ -192,7 +198,34 @@
 
 \begin{document}
 
-\red{红色字体}表示实际拼写时需要注意特殊形式。
+\fancyhf{}
+\pagestyle{fancy}
+\lhead{\thepage}%左侧
+\chead{}%中间
+\rhead{}
+\lfoot{}
+\cfoot{}%当前页
+\rfoot{}
+
+\renewcommand{\headrulewidth}{0mm}
+\renewcommand{\footrulewidth}{0mm}
+
+{\large
+\noindent jalan~-i siden~de mini xanggiyan alin bi,\\
+alin~-i hanqi sahaliyan ula eyer tugi~-i adali.\\
+alin muke~de musei mafari banjihabi,\\
+mukvn~-i enen amba kesi~be alimbi
+
+arxan burge~de fulehe akvqi, tere uthai gargan banjirakv. ere uthai gaxan~be kidure akaqun inu, ere uthai gaxan~be kidure gvnin inu.
+
+\noindent jalan~-i siden de mini xanggiyan alin bi,\\
+alin~-i hanqi sahaliyan ula eyer tugi~-i adali.\\
+muse ainu mafari gaxan~be waliyambi,\\
+enenggi mafari gaxan~be hargaxambi.
+
+kituhan~de berge akvqi, tere uthai uqulerakv. ere uthai gaxan be kidule akaqun inu, ere uthai gaxan~be kidure gvnin inu.}
+
+\pagebreak
 
 \input{note/manju-note-letter.tex}
 \input{note/manju-note-word.tex}
