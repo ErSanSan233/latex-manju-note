@@ -1,0 +1,203 @@
+\documentclass{article}
+\usepackage{xeCJK}
+\usepackage[a5paper]{geometry}
+\usepackage{graphicx}
+
+\usepackage{indentfirst}
+\usepackage{atbegshi}
+
+\usepackage{fancyhdr}
+
+
+\usepackage[normalem]{ulem}  % Provides underline and strikeout commands
+\usepackage{tikz}            % Required for drawing the arrow
+
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{makecell} %表格内换行
+
+\usepackage{xcolor}
+\usepackage{colortbl}
+
+%#region 竖排支持
+%堆叠行，实现从下向上折行
+
+\geometry{left=2.5cm, right=4cm, top=2cm, bottom=3cm}
+
+\XeTeXupwardsmode1
+
+%输出内容旋转90度
+\AtBeginShipout{%
+    \global\setbox\AtBeginShipoutBox\vbox{%
+        \special{pdf: put @thispage <</Rotate 90>>}%
+        \box\AtBeginShipoutBox
+    }%
+}%
+
+%纠正汉字偏移
+%作者：Nyoeghau
+%链接：https://www.zhihu.com/question/20544732/answer/581301432
+\newcommand*\CJKmovesymbol[1]{\raise.45em\hbox{#1}}
+\newcommand*\CJKmove{\punctstyle{plain}
+    \let\CJKsymbol\CJKmovesymbol
+    \let\CJKpunctsymbol\CJKsymbol} %修正baseline
+    % \AtBeginDocument{\CJKmove \sloppy}
+    \AtBeginDocument{\CJKmove}
+
+%#endregion
+
+%#region 汉满混排字体
+\setCJKmainfont[
+    RawFeature={vertical:+vert}, 
+    Scale=0.7,
+    FakeStretch=0.95]
+    {NotoSerifCJKsc-Regular}
+
+\setmainfont[
+    Mapping = abkai-to-manju,
+    % Scale=1,
+    FakeStretch=1.13,
+    BoldFont=AbkaiXanyan,
+    ItalicFont=AbkaiBulekuBitheVT]
+    {AbkaiBulekuBithe}
+
+\renewcommand{\thesection}{\textcolor{blue}{\arabic{section}}}
+\renewcommand{\thesubsection}{\textcolor{blue}{\arabic{section}-\arabic{subsection}}}
+\renewcommand{\thesubsubsection}{\textcolor{blue}{\arabic{section}-\arabic{subsection}-\arabic{subsubsection}}}
+
+%照抄西文
+\setfontfamily\latin[
+    Scale = 0.7]
+    {NotoSerifCJKtc-Regular}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+%#endregion
+
+%#region 自定义命令
+
+%特殊字符的落到CJK字体中
+\xeCJKsetcharclass{"24B6}{"24F9}{1}%Ⓐ~ⓩ
+% \xeCJKsetcharclass{"002F}{"002F}{1}%/
+
+%箭头绘制
+\newcommand{\arrowuline}[1]{%
+    \tikz[baseline=(char.base)]{
+        \node[inner sep=0pt,outer sep=0pt] (char) {#1};
+        \draw[blue,latex-] ([yshift=0.5ex]char.north west) -- ([yshift=0.5ex]char.north east) |- (char.south east);
+    }%
+}
+
+\newcommand{\aux}[1]{%
+    \!\arrowuline{#1}\!%
+}
+
+%特殊符号
+\newcommand{\irg}{%
+    \textcolor{red}{※}}
+
+%双语展示
+\newcommand{\bil}[2]{%
+    \raisebox{0.8em}[0pt][0pt]{\makebox[0cm][l]{\tiny #2}}\mbox{#1}%
+}
+
+%照抄西文
+\newcommand{\lat}[1]{
+    {\latin #1}
+}
+
+\newcommand{\ftn}[1]{
+    {\footnotesize #1}
+}
+
+\newcommand{\red}[1]{%
+    \textcolor{red}{#1}%
+}
+
+\newcommand{\blue}[1]{%
+    \textcolor{blue}{#1}%
+}
+
+\newcommand{\ii}[3]{%
+    \raisebox{1.6\baselineskip}{\makebox[0cm]{\hspace{1mm}\tiny Ⅱ}}%
+    \fbox{\hspace{-0.35em}%
+    \raisebox{-0.7\baselineskip}{\makebox[0cm][l]{#1}}%
+    \raisebox{0.7\baselineskip}{\makebox[0cm][l]{#3}}%
+    #2%
+}}
+
+
+%列表成分
+\newenvironment{des}{
+    \begin{list}{}{%
+        \renewcommand{\makelabel}[1]{% 生成项目标签:
+                    【{\textbf{##1}}】}}}
+{\end{list}}
+%#endregion
+
+\begin{document}
+
+\fancyhf{}
+\pagestyle{fancy}
+\lhead{\thepage}%左侧
+\chead{}%中间
+\rhead{}
+\lfoot{}
+\cfoot{}%当前页
+\rfoot{}
+
+\renewcommand{\headrulewidth}{0mm}
+\renewcommand{\footrulewidth}{0mm}
+
+{\Large k'a mate sere mauri niyalmai uqulen }
+
+re raup'arah'a
+
+~\\
+
+k'a mate k'a mate k'a ora k'a ora\\
+\blue{buqen a buqen a banjin a banjin a}
+
+k'a mate k'a mate k'a ora k'a ora\\
+\blue{buqen a buqen a banjin a banjin a}
+
+teenei te tanggata puuhuruhuru\\
+\blue{funiyehe fisikan banjiha niyalma}
+
+naena nei i tiki fakafiti te \emph{ra}\\
+\blue{xun be gajifi eldebume dabuha}
+
+\emph{a} upa ne k'a upa ne \\
+\blue{afana afana}
+
+\emph{a} upa ne k'a upa ne fiti te ra\\
+\blue{afana afana xun datala}
+
+\pagebreak
+
+以下为原始草稿：
+
+k'a mate k'a mate k'a ora k'a ora\\
+\blue{buqen bi buqen bi banjin bi banjin bi}
+
+k'a mate k'a mate k'a ora k'a ora\\
+\blue{buqen bi buqen bi banjin bi banjin bi}
+
+teenei te tanggata puuhuruhuru\\
+\blue{xun be gajiha funiyehe fisin}
+
+naena nei i tiki\\
+\blue{hoshorinangge (后指出应为hoshorinahangge)}
+
+fakafiti te \emph{ra}\\
+\blue{dasame eldebumbi}
+
+\emph{a} upa ne k'a upa ne \\
+\blue{wesiki jai wesiki}
+
+\emph{a} upa ne k'a upa ne fiti te ra\\
+\blue{wesime ibeme jerkixembi}
+
+
+
+\end{document}
