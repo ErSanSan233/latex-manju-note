@@ -1,5 +1,7 @@
 # latex-manju-note
 
+[![IIIA-1](https://img.shields.io/badge/IIIA-1-D9A295)](https://github.com/ErSanSan233/IIIA)
+
 一些满文学习笔记，以及使用LaTeX和太清网转写方案混排汉满文档的尝试。
 
 manju-gisun-note.tex：可编译出PDF笔记的主文件
